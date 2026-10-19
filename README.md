@@ -49,9 +49,9 @@ the local prediction model works without it.
 
 The browser-only version in `static_site/` runs the trained model directly in
 the visitor's browser; it does not require a Python server or expose an API key.
-The `Deploy GitHub Pages` workflow publishes it on pushes to `main`. Enable
-GitHub Pages with the GitHub Actions source in the repository's Pages settings
-if it is not already enabled.
+To publish it, deploy the contents of `static_site/` to a `gh-pages` branch and
+select that branch as the GitHub Pages source in the repository's Pages
+settings.
 
 For changes to the model or its pickle files, regenerate the browser model with
 `python scripts/export_static_model.py` and commit the updated
