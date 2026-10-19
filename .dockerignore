@@ -1,0 +1,6 @@
+.env
+.env.*
+.git/
+__pycache__/
+*.py[cod]
+fake_or_real_news.csv
