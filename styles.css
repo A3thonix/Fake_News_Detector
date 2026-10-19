@@ -159,6 +159,9 @@ button:disabled { cursor: wait; opacity: .7; }
 .verdict-badge.real { color: #1c6944; background: #e5f2e9; }
 .verdict-badge.fake { color: #9d4839; background: #f8e8e2; }
 .result-copy, .result-footnote { color: var(--muted); font-size: 13px; line-height: 1.6; }
+.ai-section { margin-top: 18px; padding: 15px; border-radius: 9px; background: #f1f5ed; }
+.ai-section h3 { margin: 0 0 8px; color: var(--green-dark); font-family: var(--serif); font-size: 18px; }
+.ai-section p { margin: 0; color: #39483f; font-size: 13px; line-height: 1.7; white-space: pre-wrap; }
 .signals-section { margin-top: 19px; padding-top: 17px; border-top: 1px solid var(--line); }
 .signals-section h3 { margin: 0 0 12px; font-size: 13px; }
 .signals-section ul { display: flex; flex-wrap: wrap; gap: 8px; margin: 0; padding: 0; list-style: none; }

@@ -7,6 +7,7 @@
     <meta name="description" content="Check a news headline with a machine-learning model trained to identify fake news.">
     <title>TruthLens — Fake News Detector</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="api-config.js"></script>
     <script type="module" src="app.js"></script>
   </head>
   <body>
@@ -35,7 +36,7 @@
           </div>
           <p id="error-message" class="error-message" role="alert" hidden></p>
         </form>
-        <p class="privacy-note"><span aria-hidden="true">🔒</span> Your text is analyzed in your browser and is not sent to a server.</p>
+        <p class="privacy-note"><span aria-hidden="true">🔒</span> The prediction runs in your browser. If Gemini is enabled, your text is sent securely to the AI service for an explanation.</p>
 
         <section id="result" class="result-card" aria-live="polite" hidden>
           <div class="result-heading">
@@ -46,6 +47,10 @@
             <span id="verdict-badge" class="verdict-badge"></span>
           </div>
           <p class="result-copy">This is a pattern-based prediction, not a fact-check. The model cannot verify the story or its sources.</p>
+          <section id="ai-section" class="ai-section" hidden>
+            <h3>Gemini perspective</h3>
+            <p id="ai-explanation"></p>
+          </section>
           <div id="signals-section" class="signals-section" hidden>
             <h3>Words that influenced this prediction</h3>
             <ul id="signals-list"></ul>
