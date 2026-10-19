@@ -32,6 +32,18 @@ test("rejects requests from other origins", async () => {
   assert.equal(response.status, 403);
 });
 
+test("rejects requests to other paths", async () => {
+  const response = await worker.fetch(
+    new Request("https://api.example.test/", {
+      method: "POST",
+      headers: { Origin: origin, "Content-Type": "application/json" },
+      body: JSON.stringify({ news: "headline" }),
+    }),
+    environment(),
+  );
+  assert.equal(response.status, 404);
+});
+
 test("handles preflight without calling the Gemini API", async () => {
   const response = await worker.fetch(request(undefined, origin, "OPTIONS"), environment());
   assert.equal(response.status, 204);

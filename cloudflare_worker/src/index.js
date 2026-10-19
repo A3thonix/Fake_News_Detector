@@ -22,6 +22,10 @@ export default {
       return new Response("Forbidden", { status: 403 });
     }
 
+    if (new URL(request.url).pathname !== "/api/explain") {
+      return jsonResponse({ error: "Not found." }, 404, origin);
+    }
+
     if (request.method === "OPTIONS") {
       return new Response(null, {
         status: 204,

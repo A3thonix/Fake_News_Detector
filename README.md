@@ -57,4 +57,5 @@ API calls without publishing an API key, deploy `cloudflare_worker/` as a
 Cloudflare Worker and set `GEMINI_API_KEY` as a Worker secret. Never put the key
 in this repository or `static_site/api-config.js`. Set
 `window.TRUTHLENS_API_URL` in `static_site/api-config.js` to the Worker endpoint
-and publish the updated `static_site/` files to the `gh-pages` branch.
+and publish the updated `static_site/` files to the `gh-pages` branch. The live
+site already points to this Worker; add the secret before using Gemini.
