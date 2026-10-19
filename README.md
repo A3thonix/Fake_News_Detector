@@ -12,7 +12,7 @@ can provide an additional explanation using Google's Gemini API.
    ```
 
 2. Set `GEMINI_API_KEY` in your environment to enable Gemini explanations.
-   The app can still run its local model without this key.
+   The app can still run its local model without this optional key.
 3. Start the app:
 
    ```bash
@@ -24,6 +24,6 @@ The app listens on `http://localhost:5000` by default.
 ## Deploy on Render
 
 This repository includes a Render Blueprint in `render.yaml`. Create a new
-Blueprint from the GitHub repository in Render, then set `GEMINI_API_KEY` in
-the service's environment settings. Do not commit API keys or `.env` files.
-The local prediction model works even if the Gemini key is not configured.
+Blueprint from the GitHub repository in Render. To enable Gemini explanations,
+add `GEMINI_API_KEY` in the service's environment settings. Do not commit API
+keys or `.env` files. The local prediction model works without the Gemini key.
