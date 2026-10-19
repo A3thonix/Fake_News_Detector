@@ -38,13 +38,6 @@ Blueprint from the GitHub repository in Render. To enable Gemini explanations,
 add `GEMINI_API_KEY` in the service's environment settings. Do not commit API
 keys or `.env` files. The local prediction model works without the Gemini key.
 
-## Deploy as a Hugging Face Space
-
-Create a new Space with the Docker SDK, then push this repository to the Space's
-Git remote. The included `Dockerfile` serves the complete Flask app on port
-7860. Add `GEMINI_API_KEY` to the Space's secrets to enable Gemini explanations;
-the local prediction model works without it.
-
 ## Deploy on GitHub Pages
 
 The browser-only version in `static_site/` runs the trained model directly in
@@ -56,3 +49,12 @@ settings.
 For changes to the model or its pickle files, regenerate the browser model with
 `python scripts/export_static_model.py` and commit the updated
 `static_site/model.bin`.
+
+## Enable Gemini on the free GitHub Pages app
+
+The browser-based fake/real prediction runs on GitHub Pages. For private Gemini
+API calls without publishing an API key, deploy `cloudflare_worker/` as a
+Cloudflare Worker and set `GEMINI_API_KEY` as a Worker secret. Never put the key
+in this repository or `static_site/api-config.js`. Set
+`window.TRUTHLENS_API_URL` in `static_site/api-config.js` to the Worker endpoint
+and publish the updated `static_site/` files to the `gh-pages` branch.

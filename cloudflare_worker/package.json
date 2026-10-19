@@ -1,0 +1,8 @@
+{
+  "name": "truthlens-gemini-api",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test"
+  }
+}

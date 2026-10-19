@@ -6,6 +6,7 @@ const button = document.querySelector("#check-button");
 const charCount = document.querySelector("#char-count");
 const errorMessage = document.querySelector("#error-message");
 const resultCard = document.querySelector("#result");
+const apiUrl = window.TRUTHLENS_API_URL;
 let modelPromise;
 
 input.addEventListener("input", () => {
@@ -38,11 +39,26 @@ form.addEventListener("submit", async (event) => {
   event.preventDefault();
   errorMessage.hidden = true;
   resultCard.hidden = true;
+  document.querySelector("#ai-section").hidden = true;
   button.disabled = true;
   button.querySelector("span").textContent = "Checking...";
   try {
     const model = await loadModel();
     showResult(predict(input.value, model));
+    if (apiUrl) {
+      button.querySelector("span").textContent = "Getting Gemini perspective...";
+      const response = await fetch(apiUrl, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ news: input.value }),
+      });
+      const data = await response.json();
+      if (!response.ok) {
+        throw new Error(data.error || `Gemini request failed (${response.status}).`);
+      }
+      document.querySelector("#ai-explanation").textContent = data.explanation;
+      document.querySelector("#ai-section").hidden = false;
+    }
   } catch (error) {
     errorMessage.textContent = error.message;
     errorMessage.hidden = false;
